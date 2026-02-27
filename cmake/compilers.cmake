@@ -1,20 +1,20 @@
 if(MSVC)
   add_compile_options(
-  "$<$<COMPILE_LANGUAGE:C,CXX>:/W4>"
+  "$<$<AND:$<COMPILE_LANGUAGE:C,CXX>,$<CONFIG:Debug,RelWithDebInfo>>:/W4>"
   )
 else()
   add_compile_options(
-    "$<$<COMPILE_LANGUAGE:C,CXX>:-Wall>"
+    "$<$<AND:$<COMPILE_LANGUAGE:C,CXX>,$<CONFIG:Debug,RelWithDebInfo>>:-Wall>"
   )
 endif()
 
 if (CMAKE_Fortran_COMPILER_ID MATCHES "Intel")
   add_compile_options(
-    "$<$<COMPILE_LANGUAGE:Fortran>:-warn>"
+    "$<$<AND:$<COMPILE_LANGUAGE:Fortran>,$<CONFIG:Debug,RelWithDebInfo>>:-warn>"
   )
 elseif(CMAKE_Fortran_COMPILER_ID STREQUAL "GNU")
   add_compile_options(
-    "$<$<COMPILE_LANGUAGE:Fortran>:-Wall>"
+    "$<$<AND:$<COMPILE_LANGUAGE:Fortran>,$<CONFIG:Debug,RelWithDebInfo>>:-Wall>"
     )
 endif()
 
