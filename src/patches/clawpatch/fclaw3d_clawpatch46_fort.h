@@ -247,7 +247,7 @@ void FCLAW3D_CLAWPATCH46_FORT_COPY_FACE(const int* mx,
 /** Fortran subroutine name */
 #define FCLAW3DX_CLAWPATCH46_FORT_COPY_FACE \
          FCLAW_F77_FUNC(fclaw3dx_clawpatch46_fort_copy_face, \
-                        FCLAW3Dx_CLAWPATCH46_FORT_COPY_FACE)
+                        FCLAW3DX_CLAWPATCH46_FORT_COPY_FACE)
 
 /** @copydoc fclaw3d_clawpatch46_fort_copy_face() */
 void FCLAW3DX_CLAWPATCH46_FORT_COPY_FACE(const int* mx, 
