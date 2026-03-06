@@ -45,22 +45,19 @@
 /* Define to a macro mangling the given C identifier (in lower and upper
    case), which must not contain underscores, for linking with Fortran. */
 
-#define FCLAW_F77_FUNC(name,NAME) name ## _
-
-
-/* As F77_FUNC, but for C identifiers containing underscores. */
-
-#define FCLAW_F77_FUNC_(name,NAME) name ## _
-
-
-/* Define to a macro mangling the given C identifier (in lower and upper
-   case), which must not contain underscores, for linking with Fortran. */
-
-#define FCLAW_FC_FUNC(name,NAME) name ## _
-
-
-/* As FC_FUNC, but for C identifiers containing underscores. */
-#define FCLAW_FC_FUNC_(name,NAME) name ## _
+#if defined(_MSC_VER)
+  /* Intel LLVM (ifx) on Windows uses uppercase without underscore */
+  #define FCLAW_F77_FUNC(name,NAME) NAME
+  #define FCLAW_F77_FUNC_(name,NAME) NAME
+  #define FCLAW_FC_FUNC(name,NAME) NAME
+  #define FCLAW_FC_FUNC_(name,NAME) NAME
+#else
+  /* Most Unix compilers use lowercase with underscore */
+  #define FCLAW_F77_FUNC(name,NAME) name ## _
+  #define FCLAW_F77_FUNC_(name,NAME) name ## _
+  #define FCLAW_FC_FUNC(name,NAME) name ## _
+  #define FCLAW_FC_FUNC_(name,NAME) name ## _
+#endif
 
 
 /* F77 compiler flags */
