@@ -55,6 +55,27 @@ vtk_patch_dim(fclaw_global_t* glob, fclaw_patch_t* patch)
     return output_dim;
 }
 
+static int
+vtk_patch_dim(fclaw_global_t* glob, fclaw_patch_t* patch)
+{
+    int clawpatch_dim = fclaw_clawpatch_dim(patch);
+    int output_dim = clawpatch_dim;
+    if(clawpatch_dim == 3 && patch->refine_dim == 2)
+    {
+        int mx, my, mz, mbc;
+        double xlower, ylower, zlower, dx, dy, dz;
+        fclaw_clawpatch_3d_grid_data (glob, patch, &mx, &my, &mz, &mbc,
+                                      &xlower, &ylower, &zlower,
+                                      &dx, &dy, &dz);
+        if(mz == 1)
+        {
+            output_dim = 2;
+        }
+    }
+
+    return output_dim;
+}
+
 static
 fclaw_clawpatch_vtk_vtable_entry_t* vtk_vt_entry_new(const char* name,
                                                      fclaw_vtk_entry_type_t type,
