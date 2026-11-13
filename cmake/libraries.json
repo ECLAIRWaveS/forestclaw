@@ -1,9 +1,5 @@
 {
-  "zlib": {
-    "url" : "https://github.com/zlib-ng/zlib-ng.git",
-    "tag": "2.2.1"
-  },
   "hdf5": {
-    "url": "https://github.com/HDFGroup/hdf5/archive/refs/tags/hdf5_1.14.4.3.tar.gz"
+    "2.2": "https://github.com/HDFGroup/hdf5/archive/refs/tags/2.2.0.tar.gz"
   }
 }
